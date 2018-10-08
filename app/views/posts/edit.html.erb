@@ -1,0 +1,8 @@
+<h1>Posts#edit</h1>
+
+<%= form_tag("/posts/#{@post.id}/update") do %>
+  <p>content: </p>
+  <textarea name="content"><%= @post.content %></textarea>
+  <br>
+  <input type="submit" value="edit">
+<% end %>

@@ -1,0 +1,13 @@
+<h1>Posts#show</h1>
+
+
+<img src="<%= "/user_images/#{@user.image_name}" %>">
+<h3><%= link_to(@user.name, "users/#{@user.id}") %></h3>
+
+<p>content: </p>
+<p><%= @post.content %></p>
+
+<% if @post.user_id.to_i == @current_user.id %>
+  <%= link_to("edit", "/posts/#{@post.id}/edit")%>
+  <%= link_to("delete", "/posts/#{@post.id}/destroy", {method: "post"})%>
+<% end %>

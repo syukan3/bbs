@@ -1,0 +1,20 @@
+
+<h2>Sign up</h2>
+
+<%= form_tag("/users/create") do %>
+  <p>User Name</p>
+  <input type="text" name="name">
+
+  <p>E-mail</p>
+  <input type="text" name="email">
+
+  <p>Password</p>
+  <input type="password" name="password">
+  <br><br>
+  <input type="submit" value="sign up">
+<% end %>
+
+<br><br>
+<%= link_to("top", "/")%>
+<br>
+<%= link_to("log in", "login")%>
