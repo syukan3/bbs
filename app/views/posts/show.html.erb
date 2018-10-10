@@ -7,7 +7,7 @@
 <p>content: </p>
 <p><%= @post.content %></p>
 
-<% if @post.user_id.to_i == @current_user.id %>
+<% if @post.user_id.to_i == current_user.id %>
   <%= link_to("edit", "/posts/#{@post.id}/edit")%>
   <%= link_to("delete", "/posts/#{@post.id}/destroy", {method: "post"})%>
 <% end %>

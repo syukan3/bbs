@@ -19,18 +19,20 @@
     <%= yield %>
   </body>
 
-  <br><br>
-  <div class="footer">
-    <%= link_to("Top", "/") %> &ensp;
-    <% if session[:user_id] == nil %>
-      <%= link_to("log in", "/login") %> &ensp;
-      <%= link_to("sign up", "/signup") %> &ensp;
-    <% else %>
-      <%= link_to("post index", "/posts/index") %> &ensp;
-      <%= link_to("new post", "/posts/new") %> &ensp;
-      <%= link_to("user index", "/users/index") %> &ensp;
-      <%= link_to("log out", "/logout") %> &ensp;
-    <% end %>
-  </div>
+
+    <br><br>
+    <div class="footer">
+      <%= link_to("Top", "/") %> &ensp;
+      <% if user_signed_in? %>
+        <%= link_to("post index", "/posts/index") %> &ensp;
+        <%= link_to("new post", "/posts/new") %> &ensp;
+        <%= link_to("user index", "/users/index") %> &ensp;
+        <%= link_to("log out", "/users/sign_out") %> &ensp;
+      <% else %>
+        <%= link_to("log in", "/users/sign_in") %> &ensp;
+        <%= link_to("sign up", "/users/sign_up") %> &ensp;
+
+      <% end %>
+    </div>
 
 </html>
