@@ -2,7 +2,7 @@
 <p>All Rooms</p>
 <p>------------------------------------------------------------</p>
 <% @rooms.each do |room| %>
-  <p>Room name</p> <%= link_to(room.room_name, "/rooms/#{room.id}") %>
+  <p>Room name</p> <%= link_to(room.room_name, room_path(room.id)) %>
   <p>------------------------------------------------------------</p>
   <br>
 <% end %>

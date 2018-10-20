@@ -1,5 +1,5 @@
 <h1>Rooms#edit</h1>
-<%= form_tag("/rooms/:id", {method: "patch"}) do %>
+<%= form_tag(room_path(@room), {method: "patch"}) do %>
   <p>Room name: </p>
   <input name="room_name" value="<%= @room.room_name %>" >
   <br>

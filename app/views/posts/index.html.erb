@@ -5,7 +5,7 @@
 <p>------------------------------------------------------------</p>
 <% @posts.each do |post| %>
 <%= link_to(post.user.name, user_path(post.user)) %>
-<%= link_to(post.content, "/posts/#{post.id}") %>
+<%= link_to(post.content, posts_path(post.id)) %>
   <p>------------------------------------------------------------</p>
   <br>
 <% end %>

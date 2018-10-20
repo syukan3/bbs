@@ -4,6 +4,6 @@
 <br><br>
 <p>All User Name</p>
 <% @users.each do |user| %>
-  <%= link_to(user.name, "/users/#{user.id}") %>
+  <%= link_to(user.name, user_path(user.id)) %>
   <br>
 <% end %>
