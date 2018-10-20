@@ -9,30 +9,31 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <% if flash[:notice] %>
-    <div class="flash">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
   <body>
-    <%= yield %>
-  </body>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 
+    <%= yield %>
 
     <br><br>
     <div class="footer">
       <%= link_to("Top", "/") %> &ensp;
       <% if user_signed_in? %>
-        <%= link_to("post index", "/posts/index") %> &ensp;
-        <%= link_to("new post", "/posts/new") %> &ensp;
-        <%= link_to("user index", "/users/index") %> &ensp;
-        <%= link_to("log out", "/users/sign_out") %> &ensp;
+        <%= link_to("user index", users_path) %> &ensp;
+        <%= link_to("post index", posts_path) %> &ensp;
+        <%= link_to("new post", new_post_path) %> &ensp;
+        <%= link_to("room index", rooms_path) %> &ensp;
+        <%= link_to("new room", new_room_path) %> &ensp;
+        <%= link_to("log out", destroy_user_session_path) %> &ensp;
+        <%= link_to("test", "/users/test")%>
       <% else %>
-        <%= link_to("log in", "/users/sign_in") %> &ensp;
-        <%= link_to("sign up", "/users/sign_up") %> &ensp;
+        <%= link_to("log in", user_session_path) %> &ensp;
+        <%= link_to("sign up", new_user_registration_path	) %> &ensp;
 
       <% end %>
     </div>
-
+  </body>
 </html>

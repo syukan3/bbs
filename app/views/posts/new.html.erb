@@ -1,8 +1,16 @@
-<h1>Posts#new</h1>
+<html>
 
-<%= form_tag("/posts/create") do %>
-  <p>content: </p>
-  <textarea name="content"></textarea>
-  <br>
-  <input type="submit" value="post">
-<% end %>
+  <head>
+    <h1>Posts#new</h1>
+  </head>
+
+  <body>
+    <%= form_tag(posts_path) do %>
+      <p>content: </p>
+      <textarea name="content"></textarea>
+      <br>
+      <input type="submit" value="post">
+    <% end %>
+  </body>
+
+</html>

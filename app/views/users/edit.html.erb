@@ -1,15 +1,21 @@
+<html>
+  <head>
+    <h2>Edit</h2>
+  </head>
 
-<h2>Edit</h2>
+  <body>
+    <%= form_tag(user_path, {method: "patch"}) do %>
+      <p>User Name</p>
+      <input type="text" name="name" value="<%= @user.name %>">
+      
+      <p>E-mail</p>
+      <%= @user.email %>
 
-<%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
-  <p>User Name</p>
-  <input type="text" name="name" value="<%= @user.name %>">
+      <p>Image</p>
+      <input type="file" name="avatar">
+      <br><br>
+      <input type="submit" value="edit">
+    <% end %>
 
-  <p>E-mail</p>
-  <%= @user.email %>
-
-  <p>Image</p>
-  <input type="file" name="image">
-  <br><br>
-  <input type="submit" value="edit">
-<% end %>
+  </body>
+</html>

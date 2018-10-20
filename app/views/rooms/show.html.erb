@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <h1>Rooms#show</h1>
+  </head>
+
+  <body>
+    <header>
+      Room name: <%= @room.room_name %>
+      <br>
+      Member name :
+
+      <br>
+
+        <%= link_to("new post in room", new_post_path) %> &ensp;
+        <%= link_to("exit room", member_path, {method: "delete"}) %> &ensp;
+        <%= link_to("enter room", new_member_path) %> &ensp;
+    </header>
+
+    <div>
+      <p>All Posts in the Room (<%= @room.room_name %>)</p>
+      <p>------------------------------------------------------------</p>
+      <% @posts.each do |post| %>
+        <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+        <%= link_to(post.content, "/posts/#{post.id}") %>
+        <p>------------------------------------------------------------</p>
+        <br>
+      <% end %>
+    </div>
+
+    <footer>
+      <br><br>
+      <% if @room.create_user_id.to_i == current_user.id %>
+        Room
+        <%= link_to("edit", edit_room_path) %>
+        <%= link_to("delete", room_path, {method: "delete"})%>
+      <% end %>
+    </footer>
+  </body>
+</html>
