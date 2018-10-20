@@ -1,14 +1,7 @@
-<html>
-  <head>
-    <h1>Posts#edit</h1>
-  </head>
-
-  <body>
-    <%= form_tag("/posts/:id", {method: "patch"}) do %>
-      <p>content: </p>
-      <textarea name="content"><%= @post.content %></textarea>
-      <br>
-      <input type="submit" value="edit">
-    <% end %>
-  </body>
-</html>
+<h1>Posts#edit</h1>
+<%= form_tag("/posts/:id", {method: "patch"}) do %>
+  <p>content: </p>
+  <textarea name="content"><%= @post.content %></textarea>
+  <br>
+  <input type="submit" value="edit">
+<% end %>

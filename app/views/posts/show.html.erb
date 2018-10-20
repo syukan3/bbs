@@ -1,19 +1,14 @@
-<html>
-  <head>
-    <h1>Posts#show</h1>
-  </head>
+<h1>Posts#show</h1>
+<h3><%= link_to(@user.name, user_path(@user)) %></h3>
 
-  <body>
-<!--    <img src="<%= "/user_images/#{@user.image_name}" %>"> -->
-    <h3><%= link_to(@user.name, "users/#{@user.id}") %></h3>
+<p>content: </p>
+<p><%= @post.content %></p>
 
-    <p>content: </p>
-    <p><%= @post.content %></p>
+<% if @user.avatar.attached? %>
+  <%= image_tag url_for(@user.avatar) %>
+<% end %>
 
-    <% if @post.user_id.to_i == current_user.id %>
-      <%= link_to "edit", edit_post_path %>
-      <%= link_to("delete", post_path, {method: "delete"})%>
-    <% end %>
-  </body>
-
-</html>
+<% if @post.user_id.to_i == current_user.id %>
+  <%= link_to "edit", edit_post_path %>
+  <%= link_to("delete", post_path, {method: "delete"})%>
+<% end %>
