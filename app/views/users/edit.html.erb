@@ -4,15 +4,24 @@
   </head>
 
   <body>
-    <%= form_tag(user_path, {method: "patch"}) do %>
+    <%= form_for(@user) do |f| %>
+          <%= f.text_field :name %>
+          <%= f.label :avatar,"ユーザー画像" %>
+          <%= f.file_field :avatar %>
+          <%= f.submit %>
+    <% end %>
+
+
+    <%= form_tag(user_path(@user), {method: "patch", enctype: "multipart/form-data"}) do %>
       <p>User Name</p>
       <input type="text" name="name" value="<%= @user.name %>">
-      
+
       <p>E-mail</p>
       <%= @user.email %>
 
       <p>Image</p>
-      <input type="file" name="avatar">
+      <input type="file" name="avatar" value="<%= @user.avatar %>">
+      <%= file_field :page, :fine_name %>
       <br><br>
       <input type="submit" value="edit">
     <% end %>

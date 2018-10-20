@@ -40,7 +40,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
-    @user.avatar = user.avatar.attach(params[:avatar])
 #    @user.update params.require(:user).permit(:content, :image)
 #    if params[:image]
 #      @user.image_name = "#{@user.id}.jpg"
@@ -50,6 +49,7 @@ class UsersController < ApplicationController
 
     if @user.save
       flash[:notice] = "編集しました。"
+      @user.avatar.attach(params[:avatar])
       redirect_to("/users/#{@user.id}")
     else
       render("users/edit")
