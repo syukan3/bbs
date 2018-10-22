@@ -40,13 +40,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find_by(id: params[:id])
     @user.name = params[:name]
-#    @user.update params.require(:user).permit(:content, :image)
-#    if params[:image]
-#      @user.image_name = "#{@user.id}.jpg"
-#      image = params[:image]
-#      File.binwrite("public/user_images/#{@user.image_name}", image.read)
-#    end
-
     if @user.save
       flash[:notice] = "編集しました。"
       @user.avatar.attach(params[:avatar])
