@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'members/new'
-  get 'rooms/new'
+
   devise_for :users
 
   devise_scope :user do
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
 
   get '/' => 'home#top'
   post "/posts/:id/edit" => "posts#edit"
+
+  get "/welcome/guest" => "welcome#guest"
 
 #  get "login" => "users#login_form"
 #  get "signup" => "users#signup"
