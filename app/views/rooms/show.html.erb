@@ -3,7 +3,7 @@ Room name: <%= @room.room_name %>
 <br>
 Member name :
 <br>
-<%= link_to("new post in room", new_post_path) %> &ensp;
+<%= link_to("new post in room", new_room_post_path) %> &ensp;
 <%= link_to("exit room", member_path, {method: "delete"}) %> &ensp;
 <%= link_to("enter room", new_member_path) %> &ensp;
 
@@ -19,8 +19,10 @@ Member name :
 </div>
 
 <br><br>
-<% if @room.create_user_id.to_i == current_user.id %>
-  Room
-  <%= link_to("edit", edit_room_path) %>
-  <%= link_to("delete", room_path, {method: "delete"})%>
+<% if user_signed_in? %>
+  <% if @room.create_user_id.to_i == current_user.id %>
+    Room
+    <%= link_to("edit", edit_room_path) %>
+    <%= link_to("delete", room_path, {method: "delete"})%>
+  <% end %>
 <% end %>

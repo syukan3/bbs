@@ -21,8 +21,12 @@
     <br><br>
     <div class="footer">
       <% if current_user %>
-        <%= link_to(current_user.name, "/users/#{current_user.id}") %>
-        &ensp; &ensp; &ensp;
+        <% if current_user.name != "Guest" %>
+          <%= link_to(current_user.name, "/users/#{current_user.id}") %>
+          &ensp; &ensp; &ensp;
+        <% else %>
+          Guest &ensp; &ensp; &ensp;
+        <% end %>
       <% end %>
 
       <%= link_to("Top", "/") %> &ensp;
@@ -33,10 +37,18 @@
         <%= link_to("room index", rooms_path) %> &ensp;
         <%= link_to("new room", new_room_path) %> &ensp;
         <%= link_to("log out", destroy_user_session_path) %> &ensp;
+      <% elsif @guest != nil %>
+        <%= link_to("user index", users_path) %> &ensp;
+        <%= link_to("post index", posts_path) %> &ensp;
+        <%= link_to("new post", new_post_path) %> &ensp;
+        <%= link_to("room index", rooms_path) %> &ensp;
+        <%= link_to("Guest out(User)", users_guestout_path) %> &ensp;
+        <%= link_to("Guest out(Welcome)", welcome_guest_logout_path) %> &ensp;
       <% else %>
         <%= link_to("log in", user_session_path) %> &ensp;
         <%= link_to("sign up", new_user_registration_path) %> &ensp;
-        <%= link_to("Guest log in", welcome_guest_path) %> &ensp;
+        <%= link_to("Guest in(User)", users_guestin_path) %> &ensp;
+        <%= link_to("Guest in(Welcom)", welcom_guest_login_path) %> &ensp;
       <% end %>
     </div>
   </body>

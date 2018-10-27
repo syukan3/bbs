@@ -1,12 +1,14 @@
 <h2>My page</h2>
 <br>
-<% if @user.avatar.attached? %>
-  <%= image_tag url_for(@user.avatar) %>
-<% end %>
+<% if user_signed_in? %>
+  <% if @user.avatar.attached? %>
+    <%= image_tag url_for(@user.avatar) %>
+  <% end %>
 
 <h3><%= @user.name %></h3>
 <p><%= @user.email %></p>
 
-<% if @user.id == current_user.id %>
-  <%= link_to("edit", edit_user_path)%>
+  <% if @user.id == current_user.id %>
+    <%= link_to("edit", edit_user_path)%>
+  <% end %>
 <% end %>

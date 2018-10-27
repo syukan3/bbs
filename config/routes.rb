@@ -8,13 +8,19 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(index update edit show)
   resources :posts, only: %i(index create new update edit destroy show)
-  resources :rooms, only: %i(index create new update edit destroy show)
+  resources :rooms, only: %i(index create new update edit destroy show) do
+    resources :posts, only: %i(index create new update edit destroy show)
+  end
   resources :members, only: %i(index create new update edit destroy show)
 
   get '/' => 'home#top'
   post "/posts/:id/edit" => "posts#edit"
 
-  get "/welcome/guest" => "welcome#guest"
+  get "/users/guestin" => "users#guestin"
+  get "/users/guestout" => "users#guestout"
+
+  get "/welcom/guest_login" => "welcome#guest_login"
+  get "/welcome/guest_logout" => "welcome#guest_logout"
 
 #  get "login" => "users#login_form"
 #  get "signup" => "users#signup"

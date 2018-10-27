@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 #  before_action :authenticate_user, {only: [:index, :show, :edit, :update]}
 #  before_action :ensure_correct_user, {only: [:edit, :update]}
+  before_action :authenticate_guest_user, {only: [:show, :edit, :update]}
 
 #  def ensure_correct_user
 #    if @current_user.id != params[:id].to_i
@@ -47,6 +48,24 @@ class UsersController < ApplicationController
     else
       render("users/edit")
     end
+  end
+
+  def guestin
+   # @guest = Welcome.new(guest: true)
+    @guest = User.find_by(name: "Guest", email: "guest@guest.com")
+    @guest.save
+    session[:guest_id] = @guest.id
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to("/")
+  end
+
+  def guestout
+#    @guest = Welcome.find_by(id: session[:guest_id])
+    @guest = User.find_by(name: "Guest",)
+    @guest.destroy
+    session[:guest_id] = nil
+    flash[:notice] = "ゲストユーザーをログアウトしました。"
+    redirect_to("/")
   end
 
   def login_form

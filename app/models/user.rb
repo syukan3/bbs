@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :rooms
   belongs_to :member, optional: true
+  belongs_to :welcome, optional: true
 
   has_one_attached :avatar
 
